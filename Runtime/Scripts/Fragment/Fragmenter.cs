@@ -239,6 +239,10 @@ public static class Fragmenter
 
         for(int k = 0; k < meshes.Length; k++)
         {
+            // IDK why this bs is not in the original ~@bspringe
+            if (meshes[k].vertices.Distinct().Count() <= 4)
+                continue;
+            
             GameObject fragment = GameObject.Instantiate(fragmentTemplate, parent);
             fragment.name = $"Fragment{i}";
             fragment.transform.localPosition = Vector3.zero;
