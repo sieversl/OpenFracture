@@ -17,7 +17,7 @@ public class Slice : MonoBehaviour
     /// <summary>
     /// Collector object that stores the produced fragments
     /// </summary>
-    private GameObject fragmentRoot;
+    public GameObject fragmentRoot { private set; get; }
 
     /// <summary>
     /// Slices the attached mesh along the cut plane
