@@ -80,4 +80,18 @@ public class UnfreezeFragment : MonoBehaviour
         this.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
         this.isFrozen = false;   
     }
+
+    public void Freeze()
+    {
+        foreach(UnfreezeFragment fragment in this.transform.parent.GetComponentsInChildren<UnfreezeFragment>())
+        {
+            fragment.FreezeThis();
+        }
+    }
+
+    public void FreezeThis()
+    {
+        this.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+        this.isFrozen = true;
+    }
 }
