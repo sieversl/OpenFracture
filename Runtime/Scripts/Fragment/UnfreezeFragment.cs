@@ -15,6 +15,8 @@ public class UnfreezeFragment : MonoBehaviour
     // True if this fragment has already been unfrozen
     private bool isFrozen = true;
 
+    public Collision lastCollision;
+
     void OnCollisionEnter(Collision collision)
     {
         if (!this.isFrozen) 
@@ -36,6 +38,7 @@ public class UnfreezeFragment : MonoBehaviour
             if (collisionForce > triggerOptions.minimumCollisionForce &&
                 (!triggerOptions.filterCollisionsByTag || colliderTagAllowed))
             {
+                lastCollision = collision;
                 this.Unfreeze();
             }
         }
