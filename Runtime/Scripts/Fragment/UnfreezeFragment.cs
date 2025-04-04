@@ -10,6 +10,7 @@ public class UnfreezeFragment : MonoBehaviour
     public bool unfreezeAll = true;
 
     [Tooltip("This callback is invoked when the fracturing process has been completed.")]
+    public UnityEvent<GameObject> onCollision;
     public UnityEvent onFractureCompleted;
 
     // True if this fragment has already been unfrozen
@@ -38,6 +39,8 @@ public class UnfreezeFragment : MonoBehaviour
             if (collisionForce > triggerOptions.minimumCollisionForce &&
                 (!triggerOptions.filterCollisionsByTag || colliderTagAllowed))
             {
+                this.onCollision.Invoke(collision.gameObject);
+            
                 lastCollision = collision;
                 this.Unfreeze();
             }
