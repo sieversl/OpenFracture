@@ -39,6 +39,7 @@ public class UnfreezeFragment : MonoBehaviour
             if (collisionForce > triggerOptions.minimumCollisionForce &&
                 (!triggerOptions.filterCollisionsByTag || colliderTagAllowed))
             {
+                Debug.Log(contact.otherCollider.gameObject);
                 this.onCollision.Invoke(contact.otherCollider.gameObject);
             
                 lastCollision = collision;
